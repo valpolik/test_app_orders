@@ -3,9 +3,9 @@
 one:
   body: MyText
   order: one
-  comment: one
+  comment1: one
 
 two:
   body: MyText
   order: two
-  comment: two
+  comment1: two

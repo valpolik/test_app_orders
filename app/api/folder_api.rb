@@ -10,6 +10,7 @@ class FolderAPI < Grape::API
       'Create new order' => 'POST /api/v1/orders/',
       'Update order by ID' => 'PATCH /api/v1/orders/:id',
       'Delete order by ID' => 'DELETE /api/v1/orders/:id',
+      'Show comments for this order' => 'GET /api/v1/orders/:id/comments',
     }
   end
 

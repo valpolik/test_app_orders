@@ -1,4 +1,6 @@
-class V1::NamespaceOrders < Grape::API
+class V1::Orders::FolderOrders < Grape::API
+  mount V1::Orders::Comments::FolderComments
+
   desc 'Show all orders'
   get do
     Order.all

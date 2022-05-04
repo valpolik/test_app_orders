@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_04_085020) do
+ActiveRecord::Schema.define(version: 2022_05_04_131840) do
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body"
-    t.string "commentable_type", null: false
-    t.bigint "commentable_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["comment_id"], name: "index_comments_on_comment_id"
+    t.index ["order_id"], name: "index_comments_on_order_id"
   end
 
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -29,12 +30,6 @@ ActiveRecord::Schema.define(version: 2022_05_04_085020) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.text "first_name"
-    t.text "last_name"
-    t.text "key"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
+  add_foreign_key "comments", "comments"
+  add_foreign_key "comments", "orders"
 end
